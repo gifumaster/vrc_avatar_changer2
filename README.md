@@ -1,16 +1,55 @@
-# Tauri + Vue + TypeScript
+# VRC_Avatar_Changer
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## なにこれ
 
-## Recommended IDE Setup
+アプリからアバターの変更が可能になるツールです。
+HMDで利用時にデスクトップ画面から操作することを想定しています。
+タグフィルタによる絞り込みによってアバター名や説明文に検索をかけ、目当てのアバターを探せるようにしています。
+300以上のアバターをアップロードしていてアバターが埋もれて探すのが難しいと思ってる人におすすめです。
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+動画(Youtube)  
+[![](https://img.youtube.com/vi/LPBFArKa-dY/0.jpg)](https://www.youtube.com/watch?v=LPBFArKa-dY)
 
-## Type Support For `.vue` Imports in TS
+## インストール
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+[Release](https://github.com/gifumaster/vrc_avatar_changer/releases)から最新のバージョンのインストーラー(`avatar-changer.Setup.*.*.**.exe`
+)をダウンロードしてください。
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+## 注意事項
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+- 自分用に作成しており、動作確認は最小限になっています。  
+- VRChatAPI は公開されたサービスではないため予告なく使えなくなる可能性があります。
+- 時々、アバターを変更してもゲーム内で反映されない現象を確認しています。その場合は別のアバターにするかゲーム内から変更する必要があります。
+- インストール時にWindows Defender等によってインストールがブロックされます。うまく回避してください。
+ 
+## ログイン情報について
+
+ログイン情報は API を利用するためのトークンを取得する為に使用します。
+ID やパスワードは一切保存しません。
+二段階認証に対応していますが、メール版は確認していません、たぶん動きません（APIが違うので）
+
+## 画面
+
+ログイン後、「アバターリストを取得」を押すと自分のアバターリストが表示されるようになります。
+
+- 数が多い場合は時間がかかります。
+- アバターが1000を超えているとそれ以上は取得しないようにしています。
+- 古いデータが表示されている場合は再度「アバターリストを取得」を押してください。
+- タグはavatar の name / description から部分一致したものを絞り込み表示します。
+- タグを編集することでフィルタリングするワードを設定・変更できます。
+- 初期設定ではSpring/Summer/Fall/Winterが表示されていますがこれらも消すことができます。
+
+
+![image](https://github.com/user-attachments/assets/b14a1150-674e-413a-9799-35be043dcc3e)
+
+
+## 開発したい人
+
+Vue + Tauri で動作してます。 
+`npm install` した後に `npm run tauri dev`
+で開発環境が動作します。  
+
+## アンインストール
+
+アンインストールはWindowsのアプリから可能です。
+
