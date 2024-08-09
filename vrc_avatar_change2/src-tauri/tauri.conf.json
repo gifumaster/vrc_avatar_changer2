@@ -1,7 +1,7 @@
 {
   "productName": "vrc_avatar_change2",
   "version": "0.0.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "com.gmail.gifumaster",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
