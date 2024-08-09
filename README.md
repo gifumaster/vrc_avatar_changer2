@@ -12,7 +12,7 @@ HMDで利用時にデスクトップ画面から操作することを想定し�
 
 ## インストール
 
-[Release](https://github.com/gifumaster/vrc_avatar_changer/releases)から最新のバージョンのインストーラーをダウンロードしてください。
+[Release](https://github.com/gifumaster/vrc_avatar_changer2/releases)から最新のバージョンのインストーラーをダウンロードしてください。
 
 ## 注意事項
 
