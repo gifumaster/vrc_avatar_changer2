@@ -135,7 +135,15 @@ export async function execGetAvatarList(dto) {
 
   const data = await response.json();
 
-  return data;
+  return data.map((i) => {
+    return {
+      id: i.id,
+      thumbnailImageUrl: i.thumbnailImageUrl,
+      name: i.name,
+      imageUrl: i.imageUrl,
+      description: i.description,
+    }
+  });
 }
 
 export async function execGetAvatar(dto){
