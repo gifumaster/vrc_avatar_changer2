@@ -16,7 +16,6 @@
           "url": "https://api.vrchat.cloud"
         }
       ]
-    },
-    "http:default"
+    }
   ]
 }
