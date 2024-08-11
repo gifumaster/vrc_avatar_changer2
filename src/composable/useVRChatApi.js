@@ -138,6 +138,21 @@ export async function execGetAvatarList(dto) {
   return data;
 }
 
+export async function execGetAvatar(dto){
+  const api_base = "https://api.vrchat.cloud/api/1";
+  const endpoint = `/avatars/${dto.id}`;
+  const url = `${api_base}${endpoint}`;
+
+  const response = await fetch(url, {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      Cookie: "auth=" + dto.authToken,
+    },
+  });
+  return await response.json();
+}
+
 export async function execChangeAvatar(dto) {
   const api_base = "https://api.vrchat.cloud/api/1";
   const endpoint = `/avatars/${dto.id}/select`;
