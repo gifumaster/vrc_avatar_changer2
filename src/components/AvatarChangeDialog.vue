@@ -27,6 +27,7 @@
 
         <v-divider></v-divider>
         <v-card-actions>
+          <v-btn color="primary" text @click="updated"> サムネを更新 </v-btn>
           <v-spacer></v-spacer>
           <v-btn color="primary" text @click="execute"> 変更する </v-btn>
           <v-btn color="secondary" text @click="cancel"> しない </v-btn>
@@ -44,6 +45,7 @@ const props = defineProps([
   "changeAvatar",
   "avatarName",
   "avatarImage",
+  "updateAvatar",
 ]);
 const emit = defineEmits(["update:modelValue"]);
 
@@ -64,4 +66,9 @@ const execute = () => {
 const cancel = () => {
   emit("update:modelValue", false);
 };
+
+const updated = () => {
+  props.updateAvatar();
+  emit("update:modelValue", false);
+}
 </script>

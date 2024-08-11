@@ -1,6 +1,6 @@
 {
   "productName": "vrc_avatar_change2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "identifier": "com.gmail.gifumaster",
   "build": {
     "beforeDevCommand": "npm run dev",

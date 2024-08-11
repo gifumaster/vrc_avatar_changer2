@@ -60,6 +60,7 @@
       :avatar-name="avatarName"
       :avatar-image="avatarImage"
       :change-avatar="handelAvatarChange"
+      :update-avatar="handleUpdateAvatar"
     ></AvatarChangeDialog>
     <LoginDialog v-model="openLoginDialog">
       <div
@@ -112,6 +113,7 @@ import  {
   execGetAvatarList,
   execChangeAvatar,
   execTokenCheck,
+  execGetAvatar
 } from "../composable/useVRChatApi.js"
 
 
@@ -238,6 +240,20 @@ const handleGetAvatar = async () => {
   list.value = temp;
   disableFetch.value = false;
 };
+
+const handleUpdateAvatar = async () => {
+  const result = await execGetAvatar({
+    id: avatarId.value,
+    authToken: authToken.value,
+  });
+
+  // list.valueから同じIDのものを探して置き換える
+  const temp = updateElement(list.value,result);
+
+  localStorage.setItem("avatarList", JSON.stringify(temp));
+  list.value = temp;
+};
+
 const sleep = (time) => new Promise((r) => setTimeout(r, time));
 
 const handelAvatarChange = async () => {
@@ -288,6 +304,18 @@ const disabledLoginBtn = computed(() => {
 const disabled2FABtn = computed(() => {
   return auth2faNumber.value === ""
 })
+
+const updateElement = (origin, obj) => {
+    // arr1をループしてidをチェックし、idが同じものがあれば更新
+    for (let i = 0; i < origin.length; i++) {
+        if (origin[i].id === obj.id) {
+            // updatedAtが異なる場合、元の配列のオブジェクトを置き換える
+            origin[i] = obj;
+            break; // 一致するものが見つかったらループを終了
+        }
+    }
+    return origin;
+}
 
 watch(openTagEditorDialog, async (newValue, oldValue) => {
   if (newValue === false && oldValue === true) {
