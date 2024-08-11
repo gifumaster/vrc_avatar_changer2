@@ -7,9 +7,6 @@ HMDで利用時にデスクトップ画面から操作することを想定し�
 タグフィルタによる絞り込みによってアバター名や説明文に検索をかけ、目当てのアバターを探せるようにしています。
 300以上のアバターをアップロードしていてアバターが埋もれて探すのが難しいと思ってる人におすすめです。
 
-動画(Youtube)  
-[![](https://img.youtube.com/vi/LPBFArKa-dY/0.jpg)](https://www.youtube.com/watch?v=LPBFArKa-dY)
-
 ## インストール
 
 [Release](https://github.com/gifumaster/vrc_avatar_changer2/releases)から最新のバージョンのインストーラーをダウンロードしてください。
@@ -37,10 +34,6 @@ ID やパスワードは一切保存しません。
 - タグはavatar の name / description から部分一致したものを絞り込み表示します。
 - タグを編集することでフィルタリングするワードを設定・変更できます。
 - 初期設定ではSpring/Summer/Fall/Winterが表示されていますがこれらも消すことができます。
-
-
-![image](https://github.com/user-attachments/assets/b14a1150-674e-413a-9799-35be043dcc3e)
-
 
 ## 開発したい人
 
