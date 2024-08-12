@@ -36,7 +36,7 @@ export async function execVRChatLogin(dto) {
 }
 
 export async function execTwoFactorAuth(dto) {
-  await twofa_vrc(dto.authToken, dto.num);
+  await twofa_vrc(dto.authToken, dto.num, dto.mode);
 }
 
 async function get_apiKey(api_base) {
@@ -90,9 +90,9 @@ function extractAuthToken(cookieString) {
   return authToken;
 }
 
-export async function twofa_vrc(authToken, num) {
+export async function twofa_vrc(authToken, num, mode = 'totp') {
   const api_base = "https://api.vrchat.cloud/api/1";
-  const endpoint = "/auth/twofactorauth/totp/verify";
+  const endpoint = `/auth/twofactorauth/${mode}/verify`;
   const url = `${api_base}${endpoint}`;
 
   const postData = {
@@ -189,13 +189,17 @@ export async function execTokenCheck(dto) {
     headers,
   })  
 
-  console.info(response);
-
-
   const data = await response.json();
+
+  console.info(data);
+
   if (data.requiresTwoFactorAuth) {
-    return false;
+    if(data.requiresTwoFactorAuth.includes('totp')){
+      return 'totp';
+    }else{
+      return 'emailotp';
+    }
   }
 
-  return response.status === 200;
+  return true;
 }

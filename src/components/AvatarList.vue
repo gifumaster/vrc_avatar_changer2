@@ -133,6 +133,7 @@ const openTagEditorDialog = ref(false);
 const firstLogin = ref(true);
 const disableFetch = ref(false);
 const version = ref(0);
+const authType = ref('totp');
 
 const init = async () => {
   const authCookie = localStorage.getItem("authCookie");
@@ -171,9 +172,10 @@ const handleLogin = async () => {
     authToken: authToken.value,
   });
 
-  if (check) {
+  if (check === true) {
     openLoginDialog.value = false;
   } else {
+    authType.value = check;
     firstLogin.value = false;
   }
 
@@ -184,17 +186,17 @@ const handleTwoFactorAuth = async () => {
   const result = await execTwoFactorAuth({
     authToken: authToken.value,
     num: auth2faNumber.value,
+    mode: authType.value
   });
 
   const check = await execTokenCheck({
     authToken: authToken.value,
   });
 
-  if (check) {
+  if (check === true) {
     openLoginDialog.value = false;
     firstLogin.value = true;
   }
-  console.info(result);
 };
 
 const handleTokenCheck = async () => {
@@ -207,7 +209,8 @@ const handleTokenCheck = async () => {
     authToken: authToken.value,
   });
 
-  if (result === false) {
+  if (result !== true) {
+    authType.value = result;
     openLoginDialog.value = true;
   }
 };
