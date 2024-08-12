@@ -172,7 +172,7 @@ const handleLogin = async () => {
     authToken: authToken.value,
   });
 
-  if (check === 'true') {
+  if (check === true) {
     openLoginDialog.value = false;
   } else {
     authType.value = check;
