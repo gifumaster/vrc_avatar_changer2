@@ -57,6 +57,7 @@
 
     <AvatarChangeDialog
       v-model="dialog"
+      :avatar-id="avatarId"
       :avatar-name="avatarName"
       :avatar-image="avatarImage"
       :change-avatar="handelAvatarChange"
