@@ -27,6 +27,7 @@
 
         <v-divider></v-divider>
         <v-card-actions>
+          <a :href="url" target="_blank"> VRChat </a>
           <v-btn color="primary" text @click="updated"> サムネを更新 </v-btn>
           <v-spacer></v-spacer>
           <v-btn color="primary" text @click="execute"> 変更する </v-btn>
@@ -45,6 +46,7 @@ const props = defineProps([
   "changeAvatar",
   "avatarName",
   "avatarImage",
+  "avatarId",
   "updateAvatar",
 ]);
 const emit = defineEmits(["update:modelValue"]);
@@ -57,6 +59,10 @@ const open = computed({
     emit("update:modelValue", newValue);
   },
 });
+
+const url = computed(() => {
+  return 'https://vrchat.com/home/avatar/'+ props.avatarId
+})
 
 const execute = () => {
   props.changeAvatar();
