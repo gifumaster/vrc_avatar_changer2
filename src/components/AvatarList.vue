@@ -20,7 +20,7 @@
           density="compact"
           >アバターリストを取得(更新)</v-btn
         >
-        <span style="color: white; white-space: nowrap; font-size: 0.7rem;">{{
+        <span style="color: black; white-space: nowrap; font-size: 0.7rem;">{{
           tagPlaceholder
         }}</span>
       </div>
