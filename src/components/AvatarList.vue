@@ -1,8 +1,9 @@
 
 <template>
   <div class="container">
-    <div style="background-color: #333333; padding: 10px">
+    <div style="border-bottom:1px solid red;background-color: #EFEFEF; padding: 10px">
       <div class="d-flex">
+        <v-text-field v-model="keyword" class="wordSearch mr-3" hide-details="auto" density max-width="300px" placeholder="ワード検索"></v-text-field>
         <v-btn
           @click="() => (openTagEditorDialog = true)"
           color="primary"
@@ -19,7 +20,7 @@
           density="compact"
           >アバターリストを取得(更新)</v-btn
         >
-        <span style="color: white; white-space: nowrap">{{
+        <span style="color: white; white-space: nowrap; font-size: 0.7rem;">{{
           tagPlaceholder
         }}</span>
       </div>
@@ -134,6 +135,7 @@ const firstLogin = ref(true);
 const disableFetch = ref(false);
 const version = ref(0);
 const authType = ref('totp');
+const keyword = ref('');
 
 const init = async () => {
   const authCookie = localStorage.getItem("authCookie");
@@ -269,6 +271,7 @@ const handelAvatarChange = async () => {
 
 const filter = (list) => {
   let temp = list.value;
+
   if (searchArray.value.length > 0) {
     for (const searchText of searchArray.value) {
       temp = temp.filter((i) => {
@@ -282,6 +285,21 @@ const filter = (list) => {
     }
   }
 
+  // キーワード検索
+  if (keyword.value) {
+    // 半角スペースでsplitする。
+    const keywordList = keyword.value.split(/[\s,　]/);
+    for (const searchText of keywordList) {
+      temp = temp.filter((i) => {
+        if (
+          i.description.toLowerCase().indexOf(searchText.toLowerCase()) > -1 ||
+          i.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1
+        ) {
+          return true;
+        }
+      });
+    }
+  }  
   return temp.map((i) => {
     return {
       id: i.id,
@@ -347,4 +365,5 @@ init();
   padding: 0;
   margin: 0;
 }
+
 </style>
