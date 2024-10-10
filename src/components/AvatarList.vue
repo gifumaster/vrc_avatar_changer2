@@ -23,6 +23,10 @@
         <span style="color: black; white-space: nowrap; font-size: 0.7rem;">{{
           tagPlaceholder
         }}</span>
+
+        <div @click="openSetting" style="margin-left:100px;color: black; white-space: nowrap; font-size: 0.7rem;">
+          設定
+        </div>
       </div>
 
       <div style="max-height: 300px; overflow-y: scroll">
@@ -96,8 +100,12 @@
       <div style="background-color: white">
         <TagEditor />
       </div>
-    </TagEditorDialog>
-  </div>
+    </TagEditorDialog>  
+
+    <v-dialog v-model="openSettingDialog" class="v-dialog_custom" scrollable width="200">
+      <v-btn @click="reset">ログアウト</v-btn>
+    </v-dialog>
+</div>
 </template>
 
 <script setup>
@@ -136,9 +144,11 @@ const disableFetch = ref(false);
 const version = ref(0);
 const authType = ref('totp');
 const keyword = ref('');
+const openSettingDialog = ref(false);
 
 const init = async () => {
   const authCookie = localStorage.getItem("authCookie");
+  console.info(authCookie)
   if (authCookie === null) {
     openLoginDialog.value = true;
     return;
@@ -153,6 +163,15 @@ const init = async () => {
   }
   list.value = JSON.parse(avatarList);
 };
+
+const openSetting = () => {
+  openSettingDialog.value = true;
+}
+
+const reset = () => {
+  localStorage.removeItem('authCookie')
+  location.reload()
+}
 
 const openDialog = (id, name, imageUrl) => {
   avatarId.value = id;
