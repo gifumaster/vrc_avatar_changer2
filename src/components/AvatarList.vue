@@ -230,6 +230,11 @@ const handleTokenCheck = async () => {
     authToken: authToken.value,
   });
 
+  if (result === false){
+    reset();
+    return;
+  }
+
   if (result !== true) {
     authType.value = result;
     openLoginDialog.value = true;
