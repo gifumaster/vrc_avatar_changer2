@@ -1,7 +1,7 @@
 <template>
-  <div class="box slideIn" :title="description">
+  <div class="area slideIn" :title="description">
+    <img referrerpolicy="no-referrer" :src="props.thumbnailImageUrl" width="192px" height="144px">
     <div>{{ name }}</div>
-    <div>{{ description }}</div>
   </div>
 </template>
 
