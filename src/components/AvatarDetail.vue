@@ -23,26 +23,16 @@ const styles = computed(() => {
 <style>
 .area {
   position: relative;
-  margin: 1px;
   padding: 0;
-  width: 192px;
-  height: 144px;
+  width: 194px;
+  height: 146px;
   background-position: center;
   background-size: 100%;
-  border-radius: 5px;
   transition: background-size 0.2s;
 }
 
-.box{
-  position: relative;
-  margin: 1px;
-  padding: 0;
-  width: 250px;
-  background-position: center;
-  background-size: 100%;
-  border-radius: 5px;
-  transition: background-size 0.2s;
-  background-color:#EFEFEF;
+.area img{
+  opacity: 0.9;
 }
 
 .area div {
@@ -79,7 +69,11 @@ const styles = computed(() => {
   background-position: center;
   background-size: 120%;
   box-sizing: border-box;
-  border: 3px solid red;
+  border: 1px solid red;
   transition: background-size 0.2s;
+}
+
+.area:hover img{
+  opacity: 1;
 }
 </style>
