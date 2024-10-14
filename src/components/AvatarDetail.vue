@@ -1,6 +1,7 @@
 <template>
-  <div class="area slideIn" :style="styles" :title="description">
+  <div class="box slideIn" :title="description">
     <div>{{ name }}</div>
+    <div>{{ description }}</div>
   </div>
 </template>
 
@@ -30,6 +31,18 @@ const styles = computed(() => {
   background-size: 100%;
   border-radius: 5px;
   transition: background-size 0.2s;
+}
+
+.box{
+  position: relative;
+  margin: 1px;
+  padding: 0;
+  width: 250px;
+  background-position: center;
+  background-size: 100%;
+  border-radius: 5px;
+  transition: background-size 0.2s;
+  background-color:#EFEFEF;
 }
 
 .area div {

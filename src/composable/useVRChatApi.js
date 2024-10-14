@@ -187,7 +187,11 @@ export async function execTokenCheck(dto) {
     method: "GET",
     credentials: "include",
     headers,
-  })  
+  })
+
+  if(response.status === 401){
+    return false;
+  }
 
   const data = await response.json();
 
