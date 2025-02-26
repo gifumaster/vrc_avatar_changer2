@@ -59,8 +59,8 @@ export default {
         return;
       }
 
-      if (newTag.value.searchName.length > 10) {
-        errorMessage.value = "検索名は10文字以下";
+      if (newTag.value.searchName.length > 30) {
+        errorMessage.value = "検索名は30文字以下";
         return;
       }
 
