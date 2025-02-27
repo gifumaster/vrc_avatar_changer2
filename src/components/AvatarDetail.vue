@@ -1,6 +1,6 @@
 <template>
   <div class="area slideIn" :title="description">
-    <img referrerpolicy="no-referrer" :src="props.thumbnailImageUrl" width="192px" height="144px">
+    <img referrerpolicy="no-referrer" :src="props.thumbnailImageUrl" width="144px" height="144px">
     <div>{{ name }}</div>
   </div>
 </template>
@@ -24,7 +24,7 @@ const styles = computed(() => {
 .area {
   position: relative;
   padding: 0;
-  width: 194px;
+  width: 146px;
   height: 146px;
   background-position: center;
   background-size: 100%;
