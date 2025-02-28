@@ -23,6 +23,7 @@ const styles = computed(() => {
 <style>
 .area {
   position: relative;
+  margin:1px;
   padding: 0;
   width: 146px;
   height: 146px;
@@ -33,6 +34,9 @@ const styles = computed(() => {
 
 .area img{
   opacity: 0.9;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .area div {
