@@ -6,7 +6,11 @@
 
         <v-card-text>
           <div style="width: 450px; height: 333px">
-            <img referrerpolicy="no-referrer" :src="avatarImage" width="450px" height="333px" />
+            <img 
+              referrerpolicy="no-referrer" 
+              :src="avatarImage" 
+              style="width: 100%; height: 100%; object-fit: contain;"
+            />
           </div>
           アバター「{{ avatarName }}」に変更しますか？
         </v-card-text>
