@@ -1,7 +1,7 @@
 {
   "name": "vrc_avatar_change2",
   "private": true,
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,10 +10,10 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@tauri-apps/cli": ">=2.0.0-rc.0",
-    "@tauri-apps/api": ">=2.0.0-rc.0",
-    "@tauri-apps/plugin-http": "^2.0.0-rc.0",
-    "@tauri-apps/plugin-shell": ">=2.0.0-rc.0",
+    "@tauri-apps/cli": "2.0.0",
+    "@tauri-apps/api": "2.0.0",
+    "@tauri-apps/plugin-http": "2.0.0",
+    "@tauri-apps/plugin-shell": "2.0.0",
     "vue": "^3.3.4",
     "vue3-tags-input": "^1.0.12",
     "vuetify": "^3.6.14"

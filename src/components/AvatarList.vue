@@ -20,9 +20,18 @@
           density="compact"
           >アバターリストを取得(更新)</v-btn
         >
+        <v-btn
+          @click="handleRandomSelect"
+          color="secondary"
+          class="mr-3"
+          :disabled="disableFetch || listArray.length === 0"
+          density="compact"
+        >ランダム</v-btn>
+
         <span style="color: black; white-space: nowrap; font-size: 0.7rem;">{{
           tagPlaceholder
         }}</span>
+
 
         <div @click="openSetting" style="margin-left:100px;color: black; white-space: nowrap; font-size: 0.7rem;">
           設定
@@ -109,6 +118,7 @@
 </template>
 
 <script setup>
+
 // import list from "@/assets/json/avatar.json";
 import { computed, ref, watch } from "vue";
 import AvatarDetail from "./AvatarDetail.vue";
@@ -248,7 +258,7 @@ const handleGetAvatar = async () => {
   let temp = [];
   disableFetch.value = true;
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     //
     const result = await execGetAvatarList({
       authToken: authToken.value,
@@ -282,6 +292,14 @@ const handleUpdateAvatar = async () => {
 
   localStorage.setItem("avatarList", JSON.stringify(temp));
   list.value = temp;
+};
+
+
+const handleRandomSelect = () => {
+  if (listArray.value.length === 0) return;
+  const idx = Math.floor(Math.random() * listArray.value.length);
+  const avatar = listArray.value[idx];
+  openDialog(avatar.id, avatar.name, avatar.imageUrl);
 };
 
 const sleep = (time) => new Promise((r) => setTimeout(r, time));
