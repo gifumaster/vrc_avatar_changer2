@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@tauri-apps/cli": ">=2.0.0-rc.0",
-    "@tauri-apps/api": ">=2.0.0-rc.0",
-    "@tauri-apps/plugin-http": "^2.0.0-rc.0",
-    "@tauri-apps/plugin-shell": ">=2.0.0-rc.0",
+    "@tauri-apps/api": "2.0.0-rc.1",
+    "@tauri-apps/plugin-http": "2.0.0-rc.1",
+    "@tauri-apps/plugin-shell": "2.0.0-rc.1",
     "vue": "^3.3.4",
     "vue3-tags-input": "^1.0.12",
     "vuetify": "^3.6.14"
