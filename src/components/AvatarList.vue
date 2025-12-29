@@ -20,6 +20,15 @@
           density="compact"
           >アバターリストを取得(更新)</v-btn
         >
+
+        <v-btn
+          @click="handleRandomSelect"
+          color="secondary"
+          class="mr-3"
+          :disabled="disableFetch || listArray.length === 0"
+          density="compact"
+        >ランダム</v-btn>
+
         <span style="color: black; white-space: nowrap; font-size: 0.7rem;">{{
           tagPlaceholder
         }}</span>
@@ -248,7 +257,7 @@ const handleGetAvatar = async () => {
   let temp = [];
   disableFetch.value = true;
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     //
     const result = await execGetAvatarList({
       authToken: authToken.value,
@@ -285,6 +294,13 @@ const handleUpdateAvatar = async () => {
 };
 
 const sleep = (time) => new Promise((r) => setTimeout(r, time));
+
+const handleRandomSelect = () => {
+  if (listArray.value.length === 0) return;
+  const idx = Math.floor(Math.random() * listArray.value.length);
+  const avatar = listArray.value[idx];
+  openDialog(avatar.id, avatar.name, avatar.imageUrl);
+};
 
 const handelAvatarChange = async () => {
   await execChangeAvatar({
